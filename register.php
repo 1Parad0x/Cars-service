@@ -7,7 +7,11 @@ $user = new User($db);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
+<<<<<<< HEAD
     $role = $_POST['role']; 
+=======
+    $role = $_POST['role']; // tu príde 0 alebo 1
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
     $password = $_POST['password'];
 
     if ($user->create($name, $email, $role, $password)) {

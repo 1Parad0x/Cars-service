@@ -3,8 +3,11 @@ include('partials/header.php');
 
 $db = new DataBase();
 $contact = new Contact($db);
+<<<<<<< HEAD
 $user = new User($db);
 $users = $user->index();
+=======
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
 $contacts = $contact->index();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 if (isset($_GET['delete'])) {
+<<<<<<< HEAD
     $contact->destroy_contact($_GET['delete']);
     header('Location: admin.php');
     exit;
@@ -27,6 +31,13 @@ if(isset($_GET['delete_user'])) {
     header('Location: admin.php');
     exit;
 }
+=======
+    $contact->destroy($_GET['delete']);
+    header('Location: admin.php');
+    exit;
+}
+
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
 if (!$auth->isLoggedIn()) {
     header('Location: login.php');
     exit;
@@ -35,7 +46,10 @@ if ($auth->getUserRole() != 0) {
     header('Location: index.php');
     exit;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
 ?>
 <section class="container">
     <h1>Vítaj admin</h1>
@@ -77,7 +91,10 @@ if ($auth->getUserRole() != 0) {
             echo '<td>' . $con['message'] . '</td>';
             echo '<td><a href="?delete=' . $con['id'] . '"
                 onclick="return confirm(\'Urcite chcete vymazat tuto spravu?\')">Delete</a></td>';
+<<<<<<< HEAD
             echo '<td><a href="contact_edit.php?id=' . $con['id'] . '">Edit</a></td>';
+=======
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
             echo '</tr>';
         }
         ?>
@@ -85,6 +102,7 @@ if ($auth->getUserRole() != 0) {
 
 </section>
 
+<<<<<<< HEAD
 <section class="container">
     <h2>Users</h2>
     <table border=>
@@ -112,6 +130,8 @@ if ($auth->getUserRole() != 0) {
         ?>
     </table>
 </section>
+=======
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
 
 <?php
 include('partials/footer.php')

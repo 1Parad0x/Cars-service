@@ -12,7 +12,11 @@ class Contact{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+<<<<<<< HEAD
     public function destroy_contact($id){
+=======
+    public function destroy($id){
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
         $stmt = $this->db->prepare("DELETE FROM contact WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         return $stmt->execute();
@@ -35,9 +39,15 @@ class Contact{
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+<<<<<<< HEAD
     public function update_contact($id, $name, $email, $subject, $message){
         $stmt = $this->db->prepare("UPDATE contact SET name = :name, email = :email, subject = :subject, message = :message WHERE id = :id");
         $stmt->bindParam(':id', $id);
+=======
+    public function update($id, $name, $email, $subject, $message){
+        $stmt = $this->db->prepare("UPDATE contact SET name = :name, email = :email, subject = :subject, message = :message WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
         $stmt->bindParam(':name', $name);
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':subject', $subject);
