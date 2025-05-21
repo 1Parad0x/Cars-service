@@ -26,14 +26,35 @@ class User
 
     public function create($name, $email, $role, $password)
     {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+        // Skontrolujeme, či už existuje používateľ s rovnakým emailom
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
         $stmt = $this->db->prepare("SELECT id FROM users WHERE email = :email");
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->execute();
 
         if ($stmt->fetch(PDO::FETCH_ASSOC)) {
+<<<<<<< HEAD
             return false;
         }
 
+=======
+<<<<<<< HEAD
+            return false;
+        }
+
+=======
+            // Užívateľ s týmto emailom existuje
+            return false;
+        }
+
+        // Zašifrujeme heslo
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
         $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
         $stmt = $this->db->prepare("
@@ -48,14 +69,32 @@ class User
         return $stmt->execute();
     }
 
+<<<<<<< HEAD
     public function update_user($id, $name, $email, $role)
     {
+=======
+<<<<<<< HEAD
+    public function update_user($id, $name, $email, $role)
+    {
+=======
+    public function edit($id, $name, $email, $role)
+    {
+        // Overíme, či email už patrí inému používateľovi
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
         $stmt = $this->db->prepare("SELECT id FROM users WHERE email = :email AND id != :id");
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
 
         if ($stmt->fetch(PDO::FETCH_ASSOC)) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+            // Iný používateľ s týmto emailom už existuje
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
             return false;
         }
 
@@ -72,7 +111,15 @@ class User
         return $stmt->execute();
     }
 
+<<<<<<< HEAD
     public function destroy_user($id)
+=======
+<<<<<<< HEAD
+    public function destroy_user($id)
+=======
+    public function destroy($id)
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
     {
         $stmt = $this->db->prepare("DELETE FROM users WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);

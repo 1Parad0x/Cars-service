@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 require_once('partials/header.php');
+=======
+include('partials/header.php');
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 
 $db = new Database();
 $user = new User($db);
@@ -7,7 +11,15 @@ $user = new User($db);
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
+<<<<<<< HEAD
     $role = $_POST['role']; 
+=======
+<<<<<<< HEAD
+    $role = $_POST['role']; 
+=======
+    $role = $_POST['role']; // tu príde 0 alebo 1
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
     $password = $_POST['password'];
 
     if ($user->create($name, $email, $role, $password)) {
@@ -37,5 +49,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </section>
 
 <?php
+<<<<<<< HEAD
 require_once('partials/footer.php');
+=======
+include('partials/footer.php');
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 ?>

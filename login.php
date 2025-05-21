@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 require_once('partials/header.php');
+=======
+include('partials/header.php');
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 
 $db = new Database();
 $auth = new Authenticate($db);
@@ -30,5 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 </section>
 <?php
+<<<<<<< HEAD
 require_once('partials/footer.php');
+=======
+include('partials/footer.php');
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 ?>

@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 require_once('partials/header.php');
 
 $db = new DataBase();
@@ -8,6 +9,18 @@ $product = new Product($db);
 $users = $user->index();
 $contacts = $contact->index();
 $products = $product->index();
+=======
+include('partials/header.php');
+
+$db = new DataBase();
+$contact = new Contact($db);
+<<<<<<< HEAD
+$user = new User($db);
+$users = $user->index();
+=======
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
+$contacts = $contact->index();
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['message']) && !empty($_POST['subject'])) {
@@ -20,6 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 if (isset($_GET['delete'])) {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
     $contact->destroy_contact($_GET['delete']);
     header('Location: admin.php');
     exit;
@@ -29,11 +46,21 @@ if(isset($_GET['delete_user'])) {
     header('Location: admin.php');
     exit;
 }
+<<<<<<< HEAD
 if (isset($_GET['delete_car'])) {
     $product->destroy($_GET['delete_car']);
     header('Location: admin.php');
     exit;
 }
+=======
+=======
+    $contact->destroy($_GET['delete']);
+    header('Location: admin.php');
+    exit;
+}
+
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 if (!$auth->isLoggedIn()) {
     header('Location: login.php');
     exit;
@@ -42,7 +69,14 @@ if ($auth->getUserRole() != 0) {
     header('Location: index.php');
     exit;
 }
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
+=======
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 ?>
 <section class="container">
     <h1>Vítaj admin</h1>
@@ -84,7 +118,14 @@ if ($auth->getUserRole() != 0) {
             echo '<td>' . $con['message'] . '</td>';
             echo '<td><a href="?delete=' . $con['id'] . '"
                 onclick="return confirm(\'Urcite chcete vymazat tuto spravu?\')">Delete</a></td>';
+<<<<<<< HEAD
             echo '<td><a href="contact_edit.php?id=' . $con['id'] . '">Edit</a></td>';
+=======
+<<<<<<< HEAD
+            echo '<td><a href="contact_edit.php?id=' . $con['id'] . '">Edit</a></td>';
+=======
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
             echo '</tr>';
         }
         ?>
@@ -92,6 +133,10 @@ if ($auth->getUserRole() != 0) {
 
 </section>
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 <section class="container">
     <h2>Users</h2>
     <table border=>
@@ -119,6 +164,7 @@ if ($auth->getUserRole() != 0) {
         ?>
     </table>
 </section>
+<<<<<<< HEAD
 <section class="container">
     <h2>Cars</h2>
     <table border=>
@@ -143,4 +189,11 @@ if ($auth->getUserRole() != 0) {
 </section>
 <?php
 require_once('partials/footer.php')
+=======
+=======
+>>>>>>> 7a6ea41c4b0d0277be438e018267b3ac4d53c630
+
+<?php
+include('partials/footer.php')
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 ?>

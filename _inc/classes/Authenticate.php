@@ -57,6 +57,23 @@ class Authenticate
     {
         return $_SESSION['role'] ?? null;
     }
+<<<<<<< HEAD
+=======
+    public function requireLogin()
+    {
+        if (!$this->isLoggedIn()) {
+            header("Location: login.php");
+            exit();
+        }
+    }
+    public function requireAdmin()
+    {
+        if ($this->getUserRole() !== 'admin') {
+            header("Location: index.php");
+            exit();
+        }
+    }
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 
 }
 ?>

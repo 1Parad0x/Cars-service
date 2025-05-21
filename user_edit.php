@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 require_once('partials/header.php');
+=======
+include_once('partials/header.php');
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 
 $db = new Database();
 $user = new User($db);
@@ -48,5 +52,9 @@ if(isset($_GET['id'])) {
 </section>
 
 <?php
+<<<<<<< HEAD
 require_once('partials/footer.php');
+=======
+include_once('partials/footer.php');
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 ?>

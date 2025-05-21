@@ -47,10 +47,18 @@ http://www.templatemo.com/tm-463-motor
           <?php endif; ?>
           <?php if ($auth->isLoggedIn() && $auth->getUserRole() == 0): ?>
             <li><a href="admin.php">Admin</a></li>
+<<<<<<< HEAD
             <li><a href="products_create.php">Add Car</a></li>
           <?php endif; ?>
           <?php if (!$auth->isLoggedIn()): ?>
             <li><a href="login.php">Login</a></li>
+=======
+          <?php endif; ?>
+          <?php if (!$auth->isLoggedIn()): ?>
+            <li><a href="login.php">Login</a></li>
+          <?php endif; ?>
+          <?php if (!$auth->isLoggedIn()): ?>
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
             <li><a href="register.php">Register</a></li>
           <?php endif; ?>
           </ul>

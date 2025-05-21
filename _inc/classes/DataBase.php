@@ -17,6 +17,12 @@ class DataBase{
             die("Connection failed: " . $e->getMessage());
         }
     }
+<<<<<<< HEAD
+=======
+    public function __destruct(){
+        $this->pdo = null;
+    }
+>>>>>>> feb320e15915da682688d91cdc95ea011f07e3bd
 
     public function getConnection(){
         return $this->pdo;
