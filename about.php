@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <?php
-  require("partials/header.php");
+  require_once("partials/header.php");
   ?>
          <div class="templatemo-welcome welcome-slider">
           <div class="container">
@@ -105,7 +105,7 @@
     </section> <!-- Main content -->
     <!--Footer content-->
   <?php
-  include("partials/footer.php");
+  require_once("partials/footer.php");
   ?>
   <!-- Footer content-->
     

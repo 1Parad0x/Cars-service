@@ -1,3 +1,22 @@
+<?php
+require_once('partials/header.php');
+$db = new DataBase();
+$contact = new Contact($db);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $subject = $_POST['subject'];
+  $message = $_POST['message'];
+
+  if ($contact->create($name, $email, $subject, $message)) {
+    header('Location: thankyou.php');
+    exit;
+  } else {
+    echo 'Nastala chyba pri odosielaní správy!';
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +25,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Motor Contact</title>
   <meta name="description" content="">
-<?php
-require("partials/header.php");
-?>
+
      <div class="templatemo-welcome welcome-slider">
       <div class="container">
         <div class="row">
@@ -61,21 +78,21 @@ require("partials/header.php");
         <div class="contact-form-container">
           <h2 class="contact-title">Contact Us</h2>
           <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Drbi accumsan ipsum velit.</p>
-          <form action="thankyou.php" method="post" class="tm-contact-form">
+          <form method="post" class="tm-contact-form">
               <div class="col-lg-5 col-md-5 contact-form-left">
                 <div class="form-group">
-                    <input type="text" id="contact_name" name="name" class="form-control" placeholder="NAME" />
+                    <input type="text" id="name" name="name" class="form-control" placeholder="NAME" />
                 </div>
                 <div class="form-group">
-                    <input type="email" id="contact_email" name="email" class="form-control" placeholder="EMAIL" />
+                    <input type="email" id="email" name="email" class="form-control" placeholder="EMAIL" />
                 </div>
                 <div class="form-group">
-                    <input type="text" id="contact_subject" name="subject" class="form-control" placeholder="SUBJECT" />
+                    <input type="text" id="subject" name="subject" class="form-control" placeholder="SUBJECT" />
                 </div>                
               </div>
               <div class="col-lg-7 col-md-7 contact-form-right">
                 <div class="form-group margin-bottom-0">
-                    <textarea id="contact_message" class="form-control" rows="6" placeholder="MESSAGE"></textarea>
+                    <textarea name="message" id="message" class="form-control" rows="6" placeholder="MESSAGE"></textarea>
                 </div>
               </div>
               <div class="col-lg-12 col-md-12 submit-btn-container">
@@ -98,7 +115,7 @@ require("partials/header.php");
     
     <!--Footer content-->
       <?php
-      include("partials/footer.php");
+      require_once("partials/footer.php");
       ?>
     <!-- Footer content-->
     

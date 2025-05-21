@@ -7,7 +7,7 @@
   <title>Motor Gallery</title>
   <meta name="description" content="">
   <?php
-  include("partials/header.php");
+  require_once("partials/header.php");
   ?>
       </section>
       <section class="container margin-bottom-50">
@@ -154,7 +154,7 @@
     </section> <!-- Main content -->
     <!--Footer content-->
       <?php
-      include("partials/footer.php");
+      require_once("partials/footer.php");
       ?>
     <!-- Footer content-->
     

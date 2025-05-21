@@ -1,3 +1,13 @@
+<?php
+require_once('_inc/autoload.php');
+session_start();
+$db = new Database();
+$auth = new Authenticate($db);
+
+echo '</pre>';
+print_r($_SESSION);
+echo '</pre>';
+?>
 <!-- 
 Motor Template
 http://www.templatemo.com/tm-463-motor
@@ -30,8 +40,19 @@ http://www.templatemo.com/tm-463-motor
             <li><a href="index.php">Home</a></li>
             <li><a href="products.php">Products</a></li>
             <li><a href="services.php">Services</a></li>
-            <li><a href="gallery.php">Gallery</a></li>
             <li><a href="contact.php">Contact</a></li>
+          <?php
+          if ($auth->isLoggedIn()): ?>
+            <li><a href="logout.php">Odhlásiť sa</a></li>
+          <?php endif; ?>
+          <?php if ($auth->isLoggedIn() && $auth->getUserRole() == 0): ?>
+            <li><a href="admin.php">Admin</a></li>
+            <li><a href="products_create.php">Add Car</a></li>
+          <?php endif; ?>
+          <?php if (!$auth->isLoggedIn()): ?>
+            <li><a href="login.php">Login</a></li>
+            <li><a href="register.php">Register</a></li>
+          <?php endif; ?>
           </ul>
         </nav>
       </div>

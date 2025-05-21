@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-include("partials/header.php");
+require_once("partials/header.php");
 ?>
         <div id="loader-wrapper">
           <div id="loader"></div>
@@ -137,7 +137,7 @@ include("partials/header.php");
 
   <!--Footer content-->
   <?php
-  include("partials/footer.php");
+  require_once("partials/footer.php");
   ?>
  <!-- Footer content-->
 

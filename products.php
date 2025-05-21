@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <?php
-  include("partials/header.php");
+  require_once("partials/header.php");
   ?>
 <head>
   <meta charset="utf-8">
@@ -54,7 +54,7 @@
       </div>
     </section>    
 
-    <!--Main content-->
+    
     <section class="container margin-bottom-50">
       <div class="tm-overflow-hidden row">
         <div class="tm-gallery col-lg-9 col-md-9 col-sm-8 col-xs-12">
@@ -70,94 +70,28 @@
               </a>
             </div>
           </div>
-          <div class="tm-item-container">
-            <img src="img/2.jpg" alt="Image">
-            <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-            <div class="tm-item-price-container">
-              <span class="tm-item-price">$ 34,000</span>
-              <a href="#" class="tm-item-link">
-                <span class="tm-item-action">Add to Cart</span>
-                <img src="img/plus.png" class="tm-item-add-icon" alt="Image">
-              </a>
-            </div>   
-          </div>
-          <div class="tm-item-container">
-            <img src="img/2.jpg" alt="Image">
-            <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-            <div class="tm-item-price-container">
-              <span class="tm-item-price">$ 65,000</span>
-              <a href="#" class="tm-item-link">
-                <span class="tm-item-action">Add to Cart</span>
-                <img src="img/plus.png" class="tm-item-add-icon" alt="Image">
-              </a>
-            </div>         
-          </div>
-          <div class="tm-item-container">
-            <img src="img/2.jpg" alt="Image">
-            <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-            <div class="tm-item-price-container">
-              <span class="tm-item-price">$ 20,000</span>
-              <a href="#" class="tm-item-link">
-                <span class="tm-item-action">Add to Cart</span>
-                <img src="img/plus.png" class="tm-item-add-icon" alt="Image">
-              </a>
-            </div>            
-          </div>
-          <div class="tm-item-container">
-            <img src="img/2.jpg" alt="Image">
-            <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-            <div class="tm-item-price-container">
-              <span class="tm-item-price">$ 134,000</span>
-              <a href="#" class="tm-item-link">
-                <span class="tm-item-action">Add to Cart</span>
-                <img src="img/plus.png" class="tm-item-add-icon" alt="Image">
-              </a>
-            </div>            
-          </div>
-          <div class="tm-item-container">
-            <img src="img/2.jpg" alt="Image">
-            <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-            <div class="tm-item-price-container">
-              <span class="tm-item-price">$ 55,000</span>
-              <a href="#" class="tm-item-link">
-                <span class="tm-item-action">Add to Cart</span>
-                <img src="img/plus.png" class="tm-item-add-icon" alt="Image">
-              </a>
-            </div>            
-          </div>
-          <div class="tm-item-container">
-            <img src="img/2.jpg" alt="Image">
-            <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-            <div class="tm-item-price-container">
-              <span class="tm-item-price">$ 20,000</span>
-              <a href="#" class="tm-item-link">
-                <span class="tm-item-action">Add to Cart</span>
-                <img src="img/plus.png" class="tm-item-add-icon" alt="Image">
-              </a>
-            </div>            
-          </div>
-          <div class="tm-item-container">
-            <img src="img/2.jpg" alt="Image">
-            <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-            <div class="tm-item-price-container">
-              <span class="tm-item-price">$ 134,000</span>
-              <a href="#" class="tm-item-link">
-                <span class="tm-item-action">Add to Cart</span>
-                <img src="img/plus.png" class="tm-item-add-icon" alt="Image">
-              </a>
-            </div>            
-          </div>
-          <div class="tm-item-container">
-            <img src="img/2.jpg" alt="Image">
-            <p class="tm-item-description">pellentesque eu, pretium quissem</p><hr>
-            <div class="tm-item-price-container">
-              <span class="tm-item-price">$ 55,000</span>
-              <a href="#" class="tm-item-link">
-                <span class="tm-item-action">Add to Cart</span>
-                <img src="img/plus.png" class="tm-item-add-icon" alt="Image">
-              </a>
-            </div>            
-          </div>
+          <?php
+          $db = new DataBase();
+          $product = new Product($db);
+          $products = $product->index();
+
+          foreach ($products as $product) {
+            $imageData = base64_encode($product['Image']);
+            echo '<div class="tm-item-container">';
+            echo '<img src="data:image/png;base64,' . $imageData . '" width="200" height="130">';
+            echo '<p class="tm-item-description">' . htmlspecialchars($product['Name']) . '</p><hr>';
+            echo '<div class="tm-item-price-container">';
+            echo '<span class="tm-item-price">$ ' . htmlspecialchars($product['Price']) . '</span>';
+            echo '<a href="#" class="tm-item-link">';
+            echo '<span class="tm-item-action">Add to Cart</span>';
+            echo '<img src="img/plus.png" class="tm-item-add-icon" alt="Image">';
+            echo '</a>';
+            echo '</div>';
+            echo '</div>';
+          }
+
+          ?>
+          
         </div>
         <aside class="tm-gallery-aside col-lg-3 col-md-3 col-sm-4 col-xs-12">
           <nav class="tm-gallery-nav">
@@ -265,7 +199,7 @@
     </section> <!-- Main content -->
     <!--Footer content-->
       <?php
-      include("partials/footer.php");
+      require_once("partials/footer.php");
       ?>
     <!-- Footer content-->
     

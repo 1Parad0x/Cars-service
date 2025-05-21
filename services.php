@@ -7,7 +7,7 @@
   <title>Motor Services</title>
   <meta name="description" content="">
 <?php
-require("partials/header.php");
+require_once("partials/header.php");
 ?>
          <div class="templatemo-welcome welcome-slider">
           <div class="container">
@@ -144,7 +144,7 @@ require("partials/header.php");
     </section> <!-- Main content -->
     <!--Footer content-->
       <?php
-      include("partials/footer.php");
+      require_once("partials/footer.php");
       ?>
     <!-- Footer content-->
     
